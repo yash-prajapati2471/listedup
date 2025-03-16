@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4" style="font-weight: bold; color: #333;">Contact Us</h2>
+
+    <!-- Support Email -->
+    <div class="text-center mb-5">
+        <p style="font-size: 18px;">
+            <strong>Email:</strong> 
+            <a href="mailto:{{ support_email }}" style="color: #007bff; text-decoration: none;">
+                {{ support_email }}
+            </a>
+        </p>
+    </div>
+
+    <!-- Success Message -->
+    {% if messages %}
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                {% for message in messages %}
+                    <div class="alert alert-success text-center" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Contact Form -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group mb-3">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+                        <div class="form-group mb-3">
+                            {{ form.subject.label_tag }}
+                            {{ form.subject }}
+                        </div>
+                        <div class="form-group mb-4">
+                            {{ form.message.label_tag }}
+                            {{ form.message }}
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

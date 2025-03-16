@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Breadcrumb Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="{% url 'index' %}">Home</a>
+                <span class="breadcrumb-item active">Your Chats</span>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Chat List Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5 justify-content-center">
+        <div class="col-lg-8">
+            <h5 class="section-title position-relative text-uppercase mb-3">
+                <span class="bg-secondary pr-3">Your Chats</span>
+            </h5>
+            <div class="list-group">
+                {% for chat in chat_rooms %}
+                    <a href="{% url 'chat_room' chat.id %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>Product:</strong> {{ chat.product.product_name }}<br>
+                            <strong>Seller:</strong> {{ chat.seller.email }}
+                        </div>
+                        <span class="badge badge-primary badge-pill">Chat</span>
+                    </a>
+                {% empty %}
+                    <p class="text-muted">No chats available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Chat List End -->
+
+{% endblock %}

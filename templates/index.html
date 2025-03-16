@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Carousel Start -->
+  <div class="container-fluid mb-3">
+    <div class="row px-xl-5">
+      <div class="col-lg-8">
+        <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#header-carousel" data-slide-to="1"></li>
+            <li data-target="#header-carousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item position-relative active" style="height: 430px;">
+              <img class="position-absolute w-100 h-100" src="{% static 'img/electronics.jpg' %}" style="object-fit: cover;" />
+              <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 700px;">
+                  <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Buy & Sell Electronics</h1>
+                  <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Find great deals on mobiles, laptops, gadgets, and more!</p>
+                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="{% url "store" %}">Explore Now</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item position-relative" style="height: 430px;">
+              <img class="position-absolute w-100 h-100" src="{% static 'img/cars.jpg' %}" style="object-fit: cover;" />
+              <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 700px;">
+                  <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Cars, Bikes & More</h1>
+                  <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Browse used and new vehicles at unbeatable prices.</p>
+                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="{% url "store" %}">Find Vehicles</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item position-relative" style="height: 430px;">
+              <img class="position-absolute w-100 h-100" src="{% static 'img/real.webp' %}" style="object-fit: cover;" />
+              <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 700px;">
+                  <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Real Estate Deals</h1>
+                  <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Find houses, apartments, and plots in your area.</p>
+                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="{% url "store" %}">View Listings</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="product-offer mb-30" style="height: 200px;">
+          <img class="img-fluid" src="{% static 'img/electronics.jpg' %}" alt="" />
+          <div class="offer-text">
+            <h6 class="text-white text-uppercase">Featured Deal</h6>
+            <h3 class="text-white mb-3">Top Electronics</h3>
+            <a href="{% url "store" %}" class="btn btn-primary">Shop Now</a>
+          </div>
+        </div>
+        <div class="product-offer mb-30" style="height: 200px;">
+          <img class="img-fluid" src="{% static 'img/hot.jpg' %}" alt="" />
+          <div class="offer-text">
+            <h6 class="text-white text-uppercase">Hot Listing</h6>
+            <h3 class="text-white mb-3">Best Cars</h3>
+            <a href="{% url "store" %}" class="btn btn-primary">Explore Cars</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel End -->
+
+<!-- Featured Start -->
+<div class="container-fluid pt-5">
+  <div class="row px-xl-5 pb-3">
+    <!-- Verified Sellers -->
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+      <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+        <h1 class="fa fa-user-check text-primary m-0 mr-3"></h1>
+        <h5 class="font-weight-semi-bold m-0">Verified Sellers</h5>
+      </div>
+    </div>
+
+    <!-- Easy Communication -->
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+      <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+        <h1 class="fa fa-comments text-primary m-0 mr-3"></h1>
+        <h5 class="font-weight-semi-bold m-0">Easy Communication</h5>
+      </div>
+    </div>
+
+    <!-- Safe Payments -->
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+      <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+        <h1 class="fa fa-shield-alt text-primary m-0 mr-3"></h1>
+        <h5 class="font-weight-semi-bold m-0">Secure Payments</h5>
+      </div>
+    </div>
+
+    <!-- Fast Delivery -->
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+      <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+        <h1 class="fa fa-truck text-primary m-0 mr-3"></h1>
+        <h5 class="font-weight-semi-bold m-0">Fast Delivery</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Featured End -->
+
+
+  <!-- Categories Start -->
+<div class="container-fluid pt-5">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+      <span class="bg-secondary pr-3">Categories</span>
+    </h2>
+    <div class="row px-xl-5 pb-3">
+      {% for cate_list in links %}
+          <div class="col-lg-3 col-md-4 col-sm-6 pb-1 category-item {% if forloop.counter > 8 %}d-none extra-category{% endif %}">
+              <a class="text-decoration-none" href="{{ cate_list.get_url }}">
+                  <div class="cat-item d-flex align-items-center mb-4 p-2 border rounded shadow-sm" style="height: 120px;">
+                      <div class="overflow-hidden" style="width: 100px; height: 100px; flex-shrink: 0;">
+                          <img class="img-fluid w-100 h-100" src="{{ cate_list.image.url }}" alt="{{ cate_list.category_name }}" style="object-fit: cover;" />
+                      </div>
+                      <div class="flex-fill pl-3">
+                          <h6 class="m-0">{{ cate_list.category_name }}</h6>
+                      </div>
+                  </div>
+              </a>
+          </div>
+      {% endfor %}
+  </div>
+  {% if links|length > 8 %}
+<div class="text-center my-3">
+    <button id="toggleButton" class="btn btn-primary">More</button>
+</div>
+{% endif %}
+  </div>
+  <!-- Categories End -->
+  
+
+  <style>
+    /* Fix height of product box */
+    .product-item {
+      height: 420px; /* Adjust as needed */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    
+    /* Fix image container */
+    .product-img {
+      height: 220px; /* Adjust image container height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Make image fit perfectly */
+    .product-img img {
+      height: 100%;
+      width: auto;
+      object-fit: contain; /* Maintain aspect ratio */
+    }
+    
+    /* Keep name & price aligned */
+    .product-item .text-center {
+      padding: 10px 0;
+      height: 180px; /* Adjust text/price container height */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .product-item:hover .product-img img {
+      transform: scale(1.05); /* Slight zoom */
+    }
+    
+    /* 5. Hover effect on whole product card */
+    .product-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+
+  <!-- Products Start -->
+  <div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Products</span></h2>
+    <div class="row px-xl-5">
+      {% for product in pro|slice:":12" %}
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+          <div class="product-item bg-light mb-4">
+            <div class="product-img position-relative overflow-hidden">
+              <a href="{{ product.get_url }}"><img class="img-fluid w-100" src="{{ product.product_image.url }}" alt="" /></a>
+            </div>
+            <div class="text-center py-4">
+              <a class="h6 text-decoration-none text-truncate" href="{{ product.get_url }}">{{ product.product_name }}</a>
+              <div class="d-flex align-items-center justify-content-center mt-2">
+                <h5>₹{{ product.product_price }}</h5><h6 class="text-muted ml-2"><del>₹{{ product.product_hideprice }}</del></h6>
+              </div>
+              <div class="d-flex align-items-center justify-content-center mb-1">
+                <a href="{{ product.get_url }}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- Products End -->
+
+  <!-- Offer Start -->
+  <div class="container-fluid pt-5 pb-3">
+    <div class="row px-xl-5">
+      <div class="col-md-6">
+        <div class="product-offer mb-30" style="height: 300px;">
+          <img class="img-fluid" src="{% static 'img/real.jpg' %}" alt="" />
+          <div class="offer-text">
+            <h6 class="text-white text-uppercase">Best Deals on Homes</h6>
+            <h3 class="text-white mb-3">Find Your Dream House</h3>
+            <a href="/store/houses/" class="btn btn-primary">Explore Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="product-offer mb-30" style="height: 300px;">
+          <img class="img-fluid" src="{% static 'img/carsa.jpg' %}" alt="" />
+          <div class="offer-text">
+            <h6 class="text-white text-uppercase">Latest Cars</h6>
+            <h3 class="text-white mb-3">Hot Deals on Wheels</h3>
+            <a href="/store/cars/" class="btn btn-primary">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Offer End -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById('toggleButton');
+        let isExpanded = false;
+
+        toggleButton.addEventListener('click', function () {
+            const extraItems = document.querySelectorAll('.extra-category');
+            extraItems.forEach(item => item.classList.toggle('d-none'));
+
+            toggleButton.textContent = isExpanded ? 'More' : 'Less';
+            isExpanded = !isExpanded;
+        });
+    });
+</script>
+
+{% endblock %}

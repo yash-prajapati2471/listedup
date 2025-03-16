@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Breadcrumb Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="{% url 'index' %}">Home</a>
+                <span class="breadcrumb-item active">Chat Room</span>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Chat Room Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5 justify-content-center">
+        <div class="col-lg-8">
+            <h5 class="section-title position-relative text-uppercase mb-3">
+                <span class="bg-secondary pr-3">Chat with {{ chat_room.seller.firstname }} about "{{ chat_room.product.product_name }}"</span>
+            </h5>
+            <div id="chat-box" class="bg-light p-30 mb-4" style="height: 400px; overflow-y: scroll; border: 1px solid #ddd;">
+                {% for message in messages %}
+                    <div class="mb-2">
+                        <strong>{{ message.sender.firstname }}:</strong> {{ message.content }}
+                        <small class="text-muted">({{ message.timestamp|date:"M d, Y H:i" }})</small>
+                    </div>
+                {% empty %}
+                    <p class="text-muted">No messages yet. Start the conversation!</p>
+                {% endfor %}
+            </div>
+            <div class="bg-light p-30">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="content">Type your message:</label>
+                        <input type="text" name="content" id="content" class="form-control" placeholder="Type your message..." required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Chat Room End -->
+
+<script>
+    function fetchMessages() {
+        let chatBox = document.getElementById('chat-box');
+        let roomId = "{{ chat_room.id }}";
+
+        fetch(`/chat/get-messages/${roomId}/`)
+        .then(response => response.json())
+        .then(data => {
+            chatBox.innerHTML = '';
+            data.messages.forEach(msg => {
+                chatBox.innerHTML += `<p><strong>${msg.sender}:</strong> ${msg.content} <small>(${msg.timestamp})</small></p>`;
+            });
+            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
+        });
+    }
+
+    // Fetch messages every 3 seconds
+    setInterval(fetchMessages, 3000);
+
+    // Initial fetch
+    fetchMessages();
+</script>
+
+
+{% endblock %}

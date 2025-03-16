@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="{% url 'profile' %}" class="list-group-item list-group-item-action active">Profile Update</a>
+                <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action text-danger">Logout</a>
+            </div>
+        </div>
+
+        <!-- Profile Form -->
+        <div class="col-md-9">
+            <h3>Update Profile</h3>
+            <hr>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label>First Name</label>
+                    {{ form.firstname }}
+                </div>
+                <div class="mb-3">
+                    <label>Last Name</label>
+                    {{ form.lastname }}
+                </div>
+                <div class="mb-3">
+                    <label>Username</label>
+                    {{ form.username }}
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" value="{{ form.email.value }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label>Phone</label>
+                    <input type="text" name="phone" class="form-control" value="{{ form.phone.value }}" readonly>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

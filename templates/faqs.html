@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">❓ Frequently Asked Questions (FAQs)</h2>
+
+    <!-- FAQ Section -->
+    <div class="accordion" id="faqAccordion">
+
+        <!-- FAQ 1 -->
+        <div class="card mb-3">
+            <div class="card-header" id="faqHeadingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+                        How can I post an ad on the site?
+                    </button>
+                </h5>
+            </div>
+            <div id="faqCollapseOne" class="collapse show" aria-labelledby="faqHeadingOne" data-parent="#faqAccordion">
+                <div class="card-body">
+                    To post an ad, simply click on the "Post Ad" button at the top, fill in the required details, and submit. Make sure to follow our posting guidelines.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="card mb-3">
+            <div class="card-header" id="faqHeadingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                        How do I edit or delete my ad?
+                    </button>
+                </h5>
+            </div>
+            <div id="faqCollapseTwo" class="collapse" aria-labelledby="faqHeadingTwo" data-parent="#faqAccordion">
+                <div class="card-body">
+                    Go to "My Account" and click on "My Ads". Here, you can edit, update, or delete any of your active ads.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="card mb-3">
+            <div class="card-header" id="faqHeadingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                        How do I contact the seller or buyer?
+                    </button>
+                </h5>
+            </div>
+            <div id="faqCollapseThree" class="collapse" aria-labelledby="faqHeadingThree" data-parent="#faqAccordion">
+                <div class="card-body">
+                    You can use the "Contact Seller" button available on each product page to directly message the seller or buyer.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="card mb-3">
+            <div class="card-header" id="faqHeadingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+                        Is it safe to buy and sell on this platform?
+                    </button>
+                </h5>
+            </div>
+            <div id="faqCollapseFour" class="collapse" aria-labelledby="faqHeadingFour" data-parent="#faqAccordion">
+                <div class="card-body">
+                    We recommend meeting in public places and verifying products before purchasing. Never share sensitive information like OTPs or bank details.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="card mb-3">
+            <div class="card-header" id="faqHeadingFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faqCollapseFive" aria-expanded="false" aria-controls="faqCollapseFive">
+                        How to report a scam or fraudulent activity?
+                    </button>
+                </h5>
+            </div>
+            <div id="faqCollapseFive" class="collapse" aria-labelledby="faqHeadingFive" data-parent="#faqAccordion">
+                <div class="card-body">
+                    Please use the "Report Ad" option on the ad page, or contact our support team with details. We take safety seriously and will take immediate action.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+    /* Fix height of product box */
+    .product-item {
+      height: 420px; /* Adjust as needed */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    
+    /* Fix image container */
+    .product-img {
+      height: 220px; /* Adjust image container height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Make image fit perfectly */
+    .product-img img {
+      height: 100%;
+      width: auto;
+      object-fit: contain; /* Maintain aspect ratio */
+    }
+    
+    /* Keep name & price aligned */
+    .product-item .text-center {
+      padding: 10px 0;
+      height: 180px; /* Adjust text/price container height */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .product-item:hover .product-img img {
+      transform: scale(1.05); /* Slight zoom */
+    }
+    
+    /* 5. Hover effect on whole product card */
+    .product-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+
+<!-- Breadcrumb Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="{% url "index" %}">Home</a>
+                <a class="breadcrumb-item text-dark" href="{% url "store" %}">Shop</a>
+                <span class="breadcrumb-item active">Shop List</span>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+
+<!-- Shop Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <!-- Shop Sidebar Start -->
+        <div class="col-lg-3 col-md-4">
+            <!-- Price Start -->
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by price</span></h5>
+            <div class="bg-light p-4 mb-30">
+                <form method="GET">
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-1" name="price" value="0-100" {% if '0-100' in price_filter %}checked{% endif %}>
+                        <label class="custom-control-label" for="price-1">₹0 - ₹100</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-2" name="price" value="100-200" {% if '100-200' in price_filter %}checked{% endif %}>
+                        <label class="custom-control-label" for="price-2">₹100 - ₹200</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-3" name="price" value="200-300" {% if '200-300' in price_filter %}checked{% endif %}>
+                        <label class="custom-control-label" for="price-3">₹200 - ₹300</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-4" name="price" value="300-400" {% if '300-400' in price_filter %}checked{% endif %}>
+                        <label class="custom-control-label" for="price-4">₹300 - ₹400</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-5" name="price" value="400-500" {% if '400-500' in price_filter %}checked{% endif %}>
+                        <label class="custom-control-label" for="price-5">₹400 - ₹500</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Apply Filter</button>
+                </form>                
+                
+            </div>
+            <!-- Price End -->
+        </div>
+        <!-- Shop Sidebar End -->
+
+
+        <!-- Shop Product Start -->
+        <div class="col-lg-9 col-md-8">
+            <div class="row pb-3">
+                {% for product in page_obj %}
+                <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                    <div class="product-item bg-light mb-4">
+                        <div class="product-img position-relative overflow-hidden">
+                            <a href="{{product.get_url}}"><img class="img-fluid w-100" src="{{product.product_image.url}}" alt=""></a>
+                        </div>
+                        <div class="text-center py-4">
+                            <a class="h6 text-decoration-none text-truncate" href="{{product.get_url}}">{{product.product_name}}</a>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <h5>₹{{product.product_price}}</h5><h6 class="text-muted ml-2"><del>₹{{product.product_hideprice}}</del></h6>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center mb-1">
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small>(99)</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="col-12">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo; Previous</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">&laquo; Previous</span>
+                                </li>
+                            {% endif %}
+                
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">Next &raquo;</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">Next &raquo;</span>
+                                </li>
+                            {% endif %}
+                
+                        </ul>
+                    </nav>
+                </div>                
+            </div>
+        </div>
+        <!-- Shop Product End -->
+    </div>
+</div>
+<!-- Shop End -->
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">Post Your Product for Sale</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="post" enctype="multipart/form-data" class="bg-light p-4 rounded shadow-sm">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label>Product Name</label>
+                    {{ form.product_name }}
+                </div>
+                
+                <div class="form-group">
+                    <label>Category</label>
+                    {{ form.category }}
+                </div>
+
+                <div class="form-group">
+                    <label>Product Detail</label>
+                    {{ form.product_detail }}
+                </div>
+
+                <div class="form-group">
+                    <label>Product Price</label>
+                    {{ form.product_price }}
+                </div>
+
+                <div class="form-group">
+                    <label>Hide Price (Optional)</label>
+                    {{ form.product_hideprice }}
+                </div>
+
+                <div class="form-group">
+                    <label>Stock</label>
+                    {{ form.product_stock }}
+                </div>
+
+                <div class="form-group">
+                    <label>Main Image</label>
+                    {{ form.product_image }}
+                </div>
+
+                <div class="form-group">
+                    <label>Extra Image 1</label>
+                    {{ form.product_image1 }}
+                </div>
+
+                <div class="form-group">
+                    <label>Extra Image 2</label>
+                    {{ form.product_image2 }}
+                </div>
+
+                <div class="form-group">
+                    <label>Extra Image 3</label>
+                    {{ form.product_image3 }}
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Submit Product</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

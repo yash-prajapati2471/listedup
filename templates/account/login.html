@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Breadcrumb Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="{% url 'index' %}">Home</a>
+                <span class="breadcrumb-item active">Login</span>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Login Start -->
+{% if request.GET.command == 'verification' %}
+<h1 align="center" style="
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 15px 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    margin: 30px auto;
+    max-width: 600px;
+">
+    Please check your mail and verify your account using the link we sent.
+</h1>
+{% else %}
+<div class="container-fluid">
+    <div class="row px-xl-5 justify-content-center">
+        <div class="col-lg-6">
+            <h5 class="section-title position-relative text-uppercase mb-3">
+                <span class="bg-secondary pr-3">Login</span>
+            </h5>
+            <div class="bg-light p-30 mb-5">
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Email</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        {{ form.password }}
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block btn-primary font-weight-bold py-3">Login</button>
+                    </div>
+                    <div class="text-center">
+                        <a href="{% url 'registration' %}">Don't have an account? Register here</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<!-- Login End -->
+
+{% endblock %}
