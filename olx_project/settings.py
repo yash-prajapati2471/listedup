@@ -95,9 +95,9 @@ AUTH_USER_MODEL = 'account.registration'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'olx',
-        'USER': 'root',
-        'PASSWORD': 'yash1234',
+        'NAME': 'freedb_listedup_db',
+        'USER': 'freedb_listedup_user',
+        'PASSWORD': 'Y8k7#pT*6GQwrym',
         'HOST': 'sql.freedb.tech',
         'PORT': '3306',
     }
