@@ -98,7 +98,7 @@ DATABASES = {
         'NAME': os.environ.get('olx'),
         'USER': os.environ.get('root'),
         'PASSWORD': os.environ.get('yash1234'),
-        'HOST': os.environ.get('localhost'),
+        'HOST': os.environ.get('sql.freedb.tech'),
         'PORT': os.environ.get('3306'),
     }
 }
