@@ -95,11 +95,11 @@ AUTH_USER_MODEL = 'account.registration'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('olx'),
-        'USER': os.environ.get('root'),
-        'PASSWORD': os.environ.get('yash1234'),
-        'HOST': os.environ.get('sql.freedb.tech'),
-        'PORT': os.environ.get('3306'),
+        'NAME': 'olx',
+        'USER': 'root',
+        'PASSWORD': 'yash1234',
+        'HOST': 'sql.freedb.tech',
+        'PORT': '3306',
     }
 }
 
