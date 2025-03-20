@@ -94,12 +94,12 @@ AUTH_USER_MODEL = 'account.registration'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'freedb_listedup_db',
-        'USER': 'freedb_listedup_user',
-        'PASSWORD': 'Y8k7#pT*6GQwrym',
-        'HOST': 'sql.freedb.tech',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'xTsMErEGwUtlCmjHaSJeJMxSnuNvjunv',
+        'HOST': 'gondola.proxy.rlwy.net',
+        'PORT': '45524',
     }
 }
 
