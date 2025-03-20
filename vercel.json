@@ -1,13 +1,13 @@
 {
-    "builds": [{
-      "src": "olx_project/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11.3" }
-    }],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "olx_project/wsgi.py"
-      }
-    ]
-  }
+  "builds": [{
+    "src": "olx_project/wsgi.py",
+    "use": "@vercel/python",
+    "config": { "maxLambdaSize": "50mb", "runtime": "python3.11.3" }
+  }],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "olx_project/wsgi.py"
+    }
+  ]
+}
