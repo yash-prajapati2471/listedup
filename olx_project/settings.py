@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-import cloudinary_storage
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -22,7 +21,6 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '696523527672544',
     'API_SECRET': 'u53sz1u6zDywm1Huv1ra5TuNhUw',
 }
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
