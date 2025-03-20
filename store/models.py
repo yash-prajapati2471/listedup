@@ -2,6 +2,7 @@ from django.db import models
 from category.models import *
 from django.urls import reverse
 from account.models import *
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class product(models.Model):
@@ -14,10 +15,10 @@ class product(models.Model):
     product_hideprice = models.IntegerField()
     product_stock = models.IntegerField()
     is_active = models.BooleanField(default=True)
-    product_image = models.ImageField(upload_to='product_image/')
-    product_image1 = models.ImageField(upload_to='product_image/')
-    product_image2 = models.ImageField(upload_to='product_image/')
-    product_image3 = models.ImageField(upload_to='product_image/')
+    product_image = CloudinaryField('product_image')
+    product_image1 = CloudinaryField('product_image')
+    product_image2 = CloudinaryField('product_image')
+    product_image3 = CloudinaryField('product_image')
     creates_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
