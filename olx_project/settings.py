@@ -19,9 +19,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'djljsktlu',
-    'API_KEY': '696523527672544',
-    'API_SECRET': 'u53sz1u6zDywm1Huv1ra5TuNhUw',
+    'CLOUD_NAME': os.getenv('djljsktlu'),
+    'API_KEY': os.getenv('696523527672544'),
+    'API_SECRET': os.getenv('u53sz1u6zDywm1Huv1ra5TuNhUw'),
 }
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
