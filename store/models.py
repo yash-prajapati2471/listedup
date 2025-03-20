@@ -10,7 +10,7 @@ class product(models.Model):
     product_name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=255)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
-    product_detail = models.CharField(max_length=200)
+    product_detail = models.TextField()
     product_price = models.IntegerField()
     product_hideprice = models.IntegerField()
     product_stock = models.IntegerField()
